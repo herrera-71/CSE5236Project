@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.widget.Button;
 import android.widget.EditText;
 
 
@@ -31,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
+        Button b = (Button) findViewById(R.id.button);
+        b.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(view.getContext(), levelSelectActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /* Called when the user taps the Level Select Button */
