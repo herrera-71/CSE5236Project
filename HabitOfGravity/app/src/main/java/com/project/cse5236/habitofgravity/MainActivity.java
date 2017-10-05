@@ -32,11 +32,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
-        Button b = (Button) findViewById(R.id.button);
-        b.setOnClickListener(new View.OnClickListener(){
+        Button levelSelectButton = (Button) findViewById(R.id.button);
+        levelSelectButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(view.getContext(), levelSelectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button settingsButton = (Button) findViewById(R.id.mainMenuSettingsButton);
+        settingsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(view.getContext(), settingsActivity.class);
                 startActivity(intent);
             }
         });
