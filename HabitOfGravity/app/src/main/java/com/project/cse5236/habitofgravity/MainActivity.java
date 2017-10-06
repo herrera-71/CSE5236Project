@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        //load audio settings
+        audioAssets.getInstance().loadAssets(this);
     }
 
     /* Called when the user taps the Level Select Button */
