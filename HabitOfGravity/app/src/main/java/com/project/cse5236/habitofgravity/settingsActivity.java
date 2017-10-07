@@ -61,6 +61,7 @@ public class settingsActivity extends AppCompatActivity {
                             Toast.makeText(settingsActivity.this, "Switch (Music) is Off", Toast.LENGTH_LONG).show();
                             audioAssets.getInstance().Music = false;
                         }
+                        audioAssets.getInstance().ToggleAudio();
                     }
                 }
         );
