@@ -21,8 +21,18 @@
         </activity>
         <activity
             android:name=".levelSelectActivity"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".settingsActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".settingsActivity" />
+        <activity
+            android:name=".loginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".levelActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_level"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>
