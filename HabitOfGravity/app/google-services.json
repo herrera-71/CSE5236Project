@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "935579432043",
+    "firebase_url": "https://habitofgravity.firebaseio.com",
+    "project_id": "habitofgravity",
+    "storage_bucket": "habitofgravity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935579432043:android:bfc2824ea094f0d1",
+        "android_client_info": {
+          "package_name": "com.project.cse5236.habitofgravity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935579432043-n21sqjqhkhlief6tlo8fsaupe2utdu7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.cse5236.habitofgravity",
+            "certificate_hash": "f39065ebfe8523f5f2a549a0ed0c1c57eee94803"
+          }
+        },
+        {
+          "client_id": "935579432043-9ijpnmpss1mggk0371dr5sd8hjtrqvvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDijyEtptzqj1wULMbsdH4VDMnsHLCTrZg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935579432043-9ijpnmpss1mggk0371dr5sd8hjtrqvvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
