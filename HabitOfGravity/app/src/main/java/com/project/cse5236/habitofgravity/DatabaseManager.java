@@ -60,9 +60,10 @@ public class DatabaseManager {
         System.out.println("demoMethod for singleton");
     }
 
+    /**
     protected static void AddScoreToLeaders(String name,
-                                   long score,
-                                   DatabaseReference leaderBoardRef) {
+                                            long score,
+                                            DatabaseReference leaderBoardRef) {
         leaderBoardRef.RunTransaction(mutableData => {
                 List<object> leaders = mutableData.Value as List<object>
 
@@ -98,7 +99,8 @@ public class DatabaseManager {
         mutableData.Value = leaders;
         return TransactionResult.Success(mutableData);
     });
-    }
 
+    }
+    **/
 
 }

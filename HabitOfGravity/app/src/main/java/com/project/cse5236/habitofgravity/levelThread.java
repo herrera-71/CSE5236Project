@@ -18,6 +18,7 @@ public class levelThread extends Thread
     private boolean running;
     public static Canvas canvas;
 
+    private levelAssets levelAssets;
 
 
     public levelThread(SurfaceHolder surfaceHolder, levelScreen levelScreen)
@@ -29,6 +30,8 @@ public class levelThread extends Thread
     @Override
     public void run()
     {
+        levelAssets = levelAssets.getInstance();
+
         long startTime;
         float deltaTime;
         long sleepTime;
@@ -42,8 +45,10 @@ public class levelThread extends Thread
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-                    this.levelScreen.update();
-                    this.levelScreen.draw(canvas);
+                    //this.levelScreen.update();
+                    this.levelAssets.update();
+                    //this.levelScreen.draw(canvas);
+                    this.levelAssets.draw(canvas);
                 }
             } catch (Exception e) {
             }
@@ -61,7 +66,8 @@ public class levelThread extends Thread
             sleepTime = (long)(idealDeltaTime-deltaTime);
 
             try{
-                this.sleep(sleepTime);
+                if(sleepTime>0)
+                    this.sleep(sleepTime);
             }catch(Exception e){e.printStackTrace();}
         }
     }

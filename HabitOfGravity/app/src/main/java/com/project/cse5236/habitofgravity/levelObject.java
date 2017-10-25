@@ -1,5 +1,6 @@
 package com.project.cse5236.habitofgravity;
 
+import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.support.constraint.solver.widgets.Rectangle;
 
@@ -27,7 +28,7 @@ public abstract class levelObject {
         return new Rect(x,y,x+width,y+heigth);
     }
 
-    public void Rotate(int CenterOfRotationX, int CenterOfRotationY)
+    public void RotateRight(int CenterOfRotationX, int CenterOfRotationY)
     {
         //swap height width
         int t = width;
@@ -39,5 +40,25 @@ public abstract class levelObject {
 
         x= oldY + 2*(CenterOfRotationY-oldY);
         y= oldX + 2*(CenterOfRotationX-oldX);
+    }
+
+    public void RotateLeft(int CenterOfRotationX, int CenterOfRotationY)
+    {
+        //swap height width
+        int t = width;
+        width = heigth;
+        heigth = t;
+
+        int oldX =x;
+        int oldY =y;
+
+        x= oldY - 2*(CenterOfRotationY-oldY);
+        y= oldX - 2*(CenterOfRotationX-oldX);
+    }
+
+    public void draw(Canvas canvas)
+    {
+        //canvas.drawBitmap(null, x, y,null);
+
     }
 }
