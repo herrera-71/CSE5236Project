@@ -18,8 +18,8 @@ class PlayerObject extends levelObject {
         width =1;
         heigth =1;
 
-        this.x=  ((int)((screenWidth+width+1)*0.5f));
-        this.y= ((int)((screenHeight+heigth+1)*0.5f));
+        this.x=  ((int)((screenWidth+width)*0.5f));
+        this.y= ((int)((screenHeight+heigth)*0.5f));
 
         Log.d(this.toString(), "X: " + x + " Y: " +y);
     }

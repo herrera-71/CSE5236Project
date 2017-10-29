@@ -69,14 +69,14 @@ public class levelAssets {
     public void RotateLeft()
     {
         for (blockObject b: blockList) {
-            b.RotateLeft(playerObject.getCenterX(),playerObject.getCenterY());
+            b.RotateLeft(playerObject.getRectangle());
         }
     }
 
     public void RotateRight()
     {
         for (blockObject b: blockList) {
-            b.RotateRight(playerObject.getCenterX(),playerObject.getCenterY());
+            b.RotateRight(playerObject.getRectangle());
         }
     }
 }
