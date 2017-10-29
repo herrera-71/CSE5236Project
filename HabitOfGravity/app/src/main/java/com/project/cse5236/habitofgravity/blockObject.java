@@ -5,30 +5,20 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+import com.project.cse5236.habitofgravity.BitmapSingletons.blockBitmap;
+
 /**
  * Created by Brent on 10/25/2017.
  */
 
 public class blockObject extends levelObject {
 
-    Bitmap blockBitmap;
-
-    public blockObject()
+    public blockObject(int x, int y, int heigth, int width)
     {
-    }
-
-
-    @Override
-    public void draw(Canvas canvas)
-    {
-        //canvas.drawBitmap(null, x, y,null);
-
-        //void drawBitmap (Bitmap bitmap,
-         //   Rect src,
-          //  Rect dst,
-           // Paint paint)
-
-        canvas.drawBitmap(blockBitmap, null, new Rect(x,y,heigth,width), null);
-
+        bitmap = blockBitmap.getInstance().getBitmap();
+        this.x = x;
+        this.y = y;
+        this.heigth = heigth;
+        this.width =width;
     }
 }

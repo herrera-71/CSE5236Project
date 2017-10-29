@@ -22,13 +22,16 @@ public class levelSelectActivity extends AppCompatActivity {
                 switch (view.getId()) {
                     case R.id.button2:
                         Log.d(getClass().toString(), "button level 1");
+                        levelLoader.LoadLevel(1);
                         //set next level to level 1
                         break;
                     case R.id.button4:
                         Log.d(getClass().toString(), "button level 2");
+                        levelLoader.LoadLevel(2);
                         //set next level to level 2
                         break;
                     case R.id.button5:
+                        levelLoader.LoadLevel(3);
                         Log.d(getClass().toString(), "button level 3");
                         //set next level to level 3
                         break;
@@ -45,7 +48,7 @@ public class levelSelectActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.button4)).setOnClickListener(vocl);
         ((Button)findViewById(R.id.button5)).setOnClickListener(vocl);
 
-
+        ContextHolder.getInstance().SetContext(this);
     }
 
     Intent intent = getIntent();

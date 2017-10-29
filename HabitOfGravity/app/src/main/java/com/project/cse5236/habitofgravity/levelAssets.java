@@ -2,8 +2,11 @@ package com.project.cse5236.habitofgravity;
 
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.util.Log;
 
 import com.project.cse5236.habitofgravity.BitmapSingletons.blockBitmap;
+
+import java.util.ArrayList;
 
 /**
  * Created by Brent on 10/25/2017.
@@ -30,17 +33,50 @@ public class levelAssets {
 
     public levelScreen levelScreen;
 
+    public PlayerObject playerObject;
+
+    public ArrayList<blockObject> blockList = new ArrayList<>();
+
     public void update() {
+        //update background;
         levelScreen.update();
+
+        //player;
+
+
     }
 
     public void draw(Canvas canvas) {
         //drawbackground
         levelScreen.draw(canvas);
 
+        //draw blocks
+        for (blockObject b: blockList) {
+            b.draw(canvas);
+        }
 
+
+        //draw player
+        if(playerObject != null)
+            playerObject.draw(canvas);
+        else
+            Log.d(this.toString(),"playerObject is null");
 
         //draw controllers
         controllers.getInstance().draw(canvas);
+    }
+
+    public void RotateLeft()
+    {
+        for (blockObject b: blockList) {
+            b.RotateLeft(playerObject.getCenterX(),playerObject.getCenterY());
+        }
+    }
+
+    public void RotateRight()
+    {
+        for (blockObject b: blockList) {
+            b.RotateRight(playerObject.getCenterX(),playerObject.getCenterY());
+        }
     }
 }

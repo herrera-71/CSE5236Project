@@ -1,8 +1,10 @@
 package com.project.cse5236.habitofgravity;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.support.constraint.solver.widgets.Rectangle;
+import android.util.Log;
 
 
 /**
@@ -17,6 +19,8 @@ public abstract class levelObject {
 
     protected float dx;
     protected float dy;
+
+    protected Bitmap bitmap;
 
     public void Setlocation(int x, int y){
         this.x=x;
@@ -38,8 +42,11 @@ public abstract class levelObject {
         int oldX =x;
         int oldY =y;
 
-        x= oldY + 2*(CenterOfRotationY-oldY);
-        y= oldX + 2*(CenterOfRotationX-oldX);
+        x= oldY + (CenterOfRotationY-oldY);
+        y= oldX + (CenterOfRotationX-oldX);
+
+        Log.d(this.toString(), "OldX: " + oldX + " NewX: " + x);
+        Log.d(this.toString(), "OldY: " + oldY + " NewY: " +y);
     }
 
     public void RotateLeft(int CenterOfRotationX, int CenterOfRotationY)
@@ -52,13 +59,18 @@ public abstract class levelObject {
         int oldX =x;
         int oldY =y;
 
-        x= oldY - 2*(CenterOfRotationY-oldY);
-        y= oldX - 2*(CenterOfRotationX-oldX);
+        x= oldY - (CenterOfRotationY-oldY);
+        y= oldX - (CenterOfRotationX-oldX);
+
+        Log.d(this.toString(), "OldX: " + oldX + " NewX: " + x);
+        Log.d(this.toString(), "OldY: " + oldY + " NewY: " +y);
+
     }
 
     public void draw(Canvas canvas)
     {
         //canvas.drawBitmap(null, x, y,null);
-
+        if(bitmap != null)
+            canvas.drawBitmap(bitmap, null, new Rect(x,y,x+width,y+heigth), null);
     }
 }

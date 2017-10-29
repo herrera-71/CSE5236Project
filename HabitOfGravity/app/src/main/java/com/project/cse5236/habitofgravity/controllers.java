@@ -65,17 +65,26 @@ public class controllers {
         canvas.drawBitmap(cb.getBitmapRightMove(),null, rmRect,null);
     }
 
-    public boolean touchButton(int x, int y){
+    public boolean touchRotateButton(int x, int y){
         if(lrRect.contains(x,y)) {
+            levelAssets.getInstance().RotateLeft();
             return true;
         }
         if(rrRect.contains(x,y)) {
+            levelAssets.getInstance().RotateRight();
             return true;
         }
+        return false;
+    }
+
+    public boolean touchedMoveButton(int x, int y)
+    {
         if(lmRect.contains(x,y)) {
+            //move player left
             return true;
         }
         if(rmRect.contains(x,y)) {
+            //move player right
             return true;
         }
         return false;
