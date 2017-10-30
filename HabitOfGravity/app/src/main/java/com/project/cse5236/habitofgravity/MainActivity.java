@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference();
+//
+//        Map<String,String> users = new HashMap<>();
+//        users.put("Bob", "5");
+//        users.put("Alice", "4");
+//        usersRef.setValue(users);
+
+
+
+        //DatabaseManager.AddScoreToLeaders("Bob", 0, usersRef);
 
         //load audio settings
         audioAssets.getInstance().loadAssets(this);
