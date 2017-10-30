@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         //load audio settings
         audioAssets.getInstance().loadAssets(this);
+        ContextHolder.getInstance().SetContext(this);
     }
 
     /* Called when the user taps the Level Select Button */

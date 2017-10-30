@@ -33,6 +33,8 @@ public class levelActivity extends Activity {
         levelActivity.context = getApplicationContext();
 
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
+
+        ContextHolder.getInstance().SetContext(this);
     }
 
 
@@ -59,14 +61,19 @@ public class levelActivity extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
+        float x =event.getX();
+        float y = event.getY();
+
         boolean swipe = this.mDetector.onTouchEvent(event);
         if(!swipe && event.getAction() == MotionEvent.ACTION_UP)
         {
-            float x =event.getX();
-            float y = event.getY();
-
-            boolean bt = controllers.getInstance().touchButton((int)x,(int)y);
-            Log.d(this.toString(), "Location: "+ x + ", " + y + " ButtonTouched: " + bt);
+            boolean bt = controllers.getInstance().touchRotateButton((int)x,(int)y);
+            Log.d(this.toString(), "Location: "+ x + ", " + y + " Rotate ButtonTouched: " + bt);
+        }
+        else if(!swipe)
+        {
+            boolean bt = controllers.getInstance().touchedMoveButton((int)x,(int)y);
+            Log.d(this.toString(), "Location: "+ x + ", " + y + " Move ButtonTouched: " + bt);
         }
         return super.onTouchEvent(event);
     }
@@ -84,10 +91,14 @@ public class levelActivity extends Activity {
             float dX = event1.getX() - event2.getX();
             if(Math.abs(dX)>300)
             {
-                if(dX>0)
+                if(dX>0) {
+                    levelAssets.getInstance().RotateLeft();
                     Log.d(DEBUG_TAG, "Left: " + dX);
-                else
+                }
+                else{
+                    levelAssets.getInstance().RotateRight();
                     Log.d(DEBUG_TAG, "Right: " + dX);
+                }
             }
             return true;
         }
