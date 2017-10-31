@@ -42,6 +42,7 @@ public class levelAssets {
         levelScreen.update();
 
         //player;
+        playerObject.update();
 
 
     }
@@ -57,8 +58,11 @@ public class levelAssets {
 
 
         //draw player
-        if(playerObject != null)
+        if(playerObject != null) {
+            //Log.d(this.toString(),"Starting player Drew player");
             playerObject.draw(canvas);
+            //Log.d(this.toString(),"Drew player");
+        }
         else
             Log.d(this.toString(),"playerObject is null");
 

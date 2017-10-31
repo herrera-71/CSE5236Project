@@ -70,10 +70,16 @@ public class levelActivity extends Activity {
             boolean bt = controllers.getInstance().touchRotateButton((int)x,(int)y);
             Log.d(this.toString(), "Location: "+ x + ", " + y + " Rotate ButtonTouched: " + bt);
         }
-        else if(!swipe)
-        {
-            boolean bt = controllers.getInstance().touchedMoveButton((int)x,(int)y);
-            Log.d(this.toString(), "Location: "+ x + ", " + y + " Move ButtonTouched: " + bt);
+        if(!swipe) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                boolean bt = controllers.getInstance().touchedMoveButton((int) x, (int) y, true);
+                Log.d(this.toString(), "Location: " + x + ", " + y + " Move ButtonTouched: " + bt);
+            }
+            else
+            {
+                boolean bt = controllers.getInstance().touchedMoveButton((int) x, (int) y, false);
+                Log.d(this.toString(), "Location: " + x + ", " + y + " Move ButtonTouched: " + bt);
+            }
         }
         return super.onTouchEvent(event);
     }
