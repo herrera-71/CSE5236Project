@@ -37,6 +37,12 @@ public class levelAssets {
 
     public ArrayList<blockObject> blockList = new ArrayList<>();
 
+    public int CenterHeight;
+    public int CenterWidth;
+
+    public int xOffset=0;
+    public int yOffset=0;
+
     public void update() {
         //update background;
         levelScreen.update();
@@ -45,6 +51,9 @@ public class levelAssets {
         playerObject.update();
 
 
+        //calculate offsets;
+        xOffset = CenterWidth - playerObject.getCenterX();
+        yOffset = CenterHeight - playerObject.getCenterY();
     }
 
     public void draw(Canvas canvas) {

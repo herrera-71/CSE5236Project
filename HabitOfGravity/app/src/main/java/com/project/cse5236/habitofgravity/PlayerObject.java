@@ -18,6 +18,8 @@ class PlayerObject extends levelObject {
     float dXRight=0;
     float dY=0;
 
+
+
     PlayerObject()
     {
         int screenHeight =   ContextHolder.getInstance().GetContext().getResources().getDisplayMetrics().heightPixels;
@@ -43,20 +45,30 @@ class PlayerObject extends levelObject {
         this.y= ((int)((screenHeight-heigth)*0.5f));
 
         Log.d(this.toString(), "X: " + x + " Y: " +y);
+
+        levelAssets.getInstance().CenterHeight =(int)(screenHeight *0.5f);
+        levelAssets.getInstance().CenterWidth =(int)(screenWidth *0.5f);
     }
 
     public void update()
     {
         if(!(dXLeft!=0f && dXRight!= 0f))
-        x+=dXLeft+dXRight;
+            x+=dXLeft+dXRight;
         y+=dY;
         moveRight=false;
+
+        if(dXLeft<0)
+            dXLeft-=1;
+        if(dXRight>0)
+            dXRight+=1;
     }
 
     public void moveRight(boolean right)
     {
+        if(dXRight!= 0 & !right)
+            Log.d(this.toString(),"Resetting dXRight from:" +dXRight);
         if(right)
-            dXRight=+1;
+            dXRight=1;
         else
             dXRight=0;
 
@@ -64,10 +76,14 @@ class PlayerObject extends levelObject {
 
     public void moveLeft(boolean left)
     {
-            if(left)
-                dXLeft=-1;
-            else
-                dXLeft=0;
+        if(dXLeft!= 0 & !left)
+         Log.d(this.toString(),"Resetting dXLeft from:" +dXLeft);
+        if(left)
+            dXLeft=-1;
+        else
+            dXLeft=0;
+
+
 
     }
 
