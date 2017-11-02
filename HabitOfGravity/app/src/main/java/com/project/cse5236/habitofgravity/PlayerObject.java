@@ -61,7 +61,7 @@ class PlayerObject extends levelObject {
 			jumpBool = (jumpCounter == 0);
 		}
 		
-        y+=dY;
+        y+= jumpBool ? dY : 0;
         moveRight=false;
 
         if(dXLeft<0)
