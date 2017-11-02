@@ -8,7 +8,6 @@ public class levelLoader {
     public static void LoadLevel(int l)
     {
         levelAssets la = levelAssets.getInstance();
-        la.playerObject = new PlayerObject();
         la.blockList.clear();
 
         switch (l)
@@ -30,9 +29,12 @@ public class levelLoader {
 
     private static void loadLevelOne() {
         levelAssets la = levelAssets.getInstance();
-        la.blockList.add(new blockObject(300,300,50,100));
-
-        la.goalObject = new goalObject(1000,200,200,200);
+        la.playerObject = new PlayerObject(821,646);
+        la.blockList.add(new blockObject(0,0,1500,100));
+        la.blockList.add(new blockObject(0,0,100,1500));
+        la.blockList.add(new blockObject(1400,0,1500,100));
+        la.blockList.add(new blockObject(0,1400,100,1500));
+        la.goalObject = new goalObject(1200,200,200,200);
     }
 
     private static void loadLevelTwo() {

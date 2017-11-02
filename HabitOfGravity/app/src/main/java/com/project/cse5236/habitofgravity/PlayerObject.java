@@ -17,10 +17,14 @@ class PlayerObject extends levelObject {
     float dXLeft=0;
     float dXRight=0;
     float dY=0;
+
+    float maxDY = 10f;
+    float maxDX = 10f;
+
 	boolean jumpBool = false;
 	int jumpCounter = 0;
 
-    PlayerObject()
+    PlayerObject(int xPos, int yPos)
     {
         int screenHeight =   ContextHolder.getInstance().GetContext().getResources().getDisplayMetrics().heightPixels;
         int screenWidth =  ContextHolder.getInstance().GetContext().getResources().getDisplayMetrics().widthPixels;
@@ -41,8 +45,10 @@ class PlayerObject extends levelObject {
 
         bitmap = playerBitmap.getInstance().getBitmap();
 
-        this.x=  ((int)((screenWidth-width)*0.5f));
-        this.y= ((int)((screenHeight-heigth)*0.5f));
+        //this.x=  ((int)((screenWidth-width)*0.5f));
+        //this.y= ((int)((screenHeight-heigth)*0.5f));
+        this.x=xPos;
+        this.y=yPos;
 
         Log.d(this.toString(), "X: " + x + " Y: " +y);
 
@@ -61,14 +67,28 @@ class PlayerObject extends levelObject {
 			jumpBool = (jumpCounter == 0);
 		}
 		
-        y+= jumpBool ? dY : 0;
+        //y+= jumpBool ? dY : 0;
+        y+=dY;
         moveRight=false;
 
         if(dXLeft<0)
             dXLeft-=1;
         if(dXRight>0)
             dXRight+=1;
-		
+
+        if(CollisionTester.onGround())
+        {
+            dY=0;
+        }
+        else
+        {
+            dY=1;
+            dY = Math.max(dy,maxDY);
+        }
+
+        CollisionTester.testPlayerBlocks();
+        CollisionTester.testPlayerGoal();
+
     }
 
     public void moveRight(boolean right)
@@ -111,4 +131,16 @@ class PlayerObject extends levelObject {
     }
 
 
+    public void shiftY(int shiftY) {
+        dY=0;
+        y+=shiftY;
+
+    }
+
+    public void shiftX(int shiftX) {
+        dXLeft =0;
+        dXRight =0;
+        x+=shiftX;
+
+    }
 }
