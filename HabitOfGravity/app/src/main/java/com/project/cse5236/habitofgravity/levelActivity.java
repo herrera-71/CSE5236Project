@@ -2,6 +2,10 @@ package com.project.cse5236.habitofgravity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
@@ -35,6 +39,41 @@ public class levelActivity extends Activity {
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
         ContextHolder.getInstance().SetContext(this);
+
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        // Create a listener
+        SensorEventListener gyroscopeSensorListener = new SensorEventListener()
+        {
+
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent)
+            {
+
+                if(sensorEvent.values[2] > 0.5f)
+                {
+                    //rotateleft with cooldown
+                    levelAssets.getInstance().RotateLeftCooldown();
+                }
+                else if(sensorEvent.values[2] < -0.5f)
+                {
+                    //rotateright with cooldown
+                    levelAssets.getInstance().RotateRightCooldown();
+                }
+
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i)
+            {
+            }
+        };
+
+        // Register the listener
+        sensorManager.registerListener(gyroscopeSensorListener, gyroscopeSensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+
     }
 
 

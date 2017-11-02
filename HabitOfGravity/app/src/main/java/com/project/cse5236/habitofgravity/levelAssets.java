@@ -44,6 +44,11 @@ public class levelAssets {
     public int xOffset=0;
     public int yOffset=0;
 
+    //three second cooldown
+    private int rotateCooldown = 30*3;
+    private int currentCooldown=0;
+
+
     public void update() {
         //update background;
         levelScreen.update();
@@ -55,6 +60,11 @@ public class levelAssets {
         //calculate offsets;
         xOffset = CenterWidth - playerObject.getCenterX();
         yOffset = CenterHeight - playerObject.getCenterY();
+
+        //rotate cooldown
+        if(currentCooldown>0)
+            currentCooldown--;
+
     }
 
     public void draw(Canvas canvas) {
@@ -104,4 +114,27 @@ public class levelAssets {
         if(goalObject != null)
             goalObject.RotateRight(playerObject.getRectangle());
     }
+
+    public void RotateLeftCooldown() {
+        if(currentCooldown ==0)
+        {
+            currentCooldown= rotateCooldown;
+            RotateLeft();
+            Log.d(this.toString(), "Rotated Left from gyro");
+        }
+    }
+
+
+
+    public void RotateRightCooldown()
+    {
+        if(currentCooldown ==0)
+        {
+            currentCooldown= rotateCooldown;
+            RotateRight();
+            Log.d(this.toString(), "Rotated right from gyro");
+
+        }
+    }
+
 }
