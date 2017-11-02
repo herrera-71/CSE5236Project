@@ -31,6 +31,8 @@ public class levelLoader {
     private static void loadLevelOne() {
         levelAssets la = levelAssets.getInstance();
         la.blockList.add(new blockObject(300,300,50,100));
+
+        la.goalObject = new goalObject(1000,200,200,200);
     }
 
     private static void loadLevelTwo() {

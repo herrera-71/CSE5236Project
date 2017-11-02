@@ -36,6 +36,7 @@ public class levelAssets {
     public PlayerObject playerObject;
 
     public ArrayList<blockObject> blockList = new ArrayList<>();
+    public goalObject goalObject;
 
     public int CenterHeight;
     public int CenterWidth;
@@ -65,6 +66,10 @@ public class levelAssets {
             b.draw(canvas);
         }
 
+        //draw goal
+        if(goalObject != null)
+            goalObject.draw(canvas);
+
 
         //draw player
         if(playerObject != null) {
@@ -84,6 +89,10 @@ public class levelAssets {
         for (blockObject b: blockList) {
             b.RotateLeft(playerObject.getRectangle());
         }
+
+        //rotate goal
+        if(goalObject != null)
+            goalObject.RotateLeft(playerObject.getRectangle());
     }
 
     public void RotateRight()
@@ -91,5 +100,8 @@ public class levelAssets {
         for (blockObject b: blockList) {
             b.RotateRight(playerObject.getRectangle());
         }
+        //rotate goal
+        if(goalObject != null)
+            goalObject.RotateRight(playerObject.getRectangle());
     }
 }
