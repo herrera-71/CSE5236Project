@@ -17,8 +17,8 @@ class PlayerObject extends levelObject {
     float dXLeft=0;
     float dXRight=0;
     float dY=0;
-
-
+	boolean jumpBool = false;
+	int jumpCounter = 0;
 
     PlayerObject()
     {
@@ -54,6 +54,13 @@ class PlayerObject extends levelObject {
     {
         if(!(dXLeft!=0f && dXRight!= 0f))
             x+=dXLeft+dXRight;
+		
+		if(jumpBool) {
+			dY = jumpCounter - 5;
+			jumpCounter--;
+			jumpBool = (jumpCounter == 0);
+		}
+		
         y+=dY;
         moveRight=false;
 
@@ -61,6 +68,7 @@ class PlayerObject extends levelObject {
             dXLeft-=1;
         if(dXRight>0)
             dXRight+=1;
+		
     }
 
     public void moveRight(boolean right)
@@ -83,9 +91,16 @@ class PlayerObject extends levelObject {
         else
             dXLeft=0;
 
-
-
     }
+	
+	public void jump(boolean jump) {
+		if(!jumpBool) { 
+			jumpCounter = jump ? 10 : 0;
+			jumpBool = !jumpBool;
+		}
+	}
+	
+	
 
     public int getCenterX() {
         return x + ((int)((width+1)*0.5f));
