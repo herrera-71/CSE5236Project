@@ -35,6 +35,9 @@ public class levelLoader {
         la.blockList.add(new blockObject(1400,0,1500,100));
         la.blockList.add(new blockObject(0,1400,100,1500));
         la.goalObject = new goalObject(1200,200,200,200);
+
+        la.currentLevel=1;
+        la.nextLevel=1;
     }
 
     private static void loadLevelTwo() {

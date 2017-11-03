@@ -32,6 +32,8 @@ public class levelAssets {
     }
 
     public levelScreen levelScreen;
+    public levelActivity levelActivity;
+    public levelThread levelThread;
 
     public PlayerObject playerObject;
 
@@ -44,9 +46,15 @@ public class levelAssets {
     public int xOffset=0;
     public int yOffset=0;
 
+    public int currentLevel =0;
+    public int nextLevel=0;
+
     //three second cooldown
     private int rotateCooldown = 30*3;
     private int currentCooldown=0;
+
+    //socre
+    public int Score=0;
 
 
     public void update() {

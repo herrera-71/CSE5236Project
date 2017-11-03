@@ -2,6 +2,7 @@ package com.project.cse5236.habitofgravity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,6 +14,7 @@ import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -22,6 +24,7 @@ public class levelActivity extends Activity {
     private static Context context;
 
     private GestureDetectorCompat mDetector;
+    private View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class levelActivity extends Activity {
 
 
         levelAssets.getInstance().levelScreen=new levelScreen(this);
+        levelAssets.getInstance().levelActivity =this;
         setContentView( levelAssets.getInstance().levelScreen);
 
         levelActivity.context = getApplicationContext();
@@ -114,13 +118,19 @@ public class levelActivity extends Activity {
                 boolean bt = controllers.getInstance().touchedMoveButton((int) x, (int) y, true);
                 Log.d(this.toString(), "Location: " + x + ", " + y + " Move ButtonTouched: " + bt);
             }
-            else
+            else if(event.getAction() == MotionEvent.ACTION_UP)
             {
                 boolean bt = controllers.getInstance().touchedMoveButton((int) x, (int) y, false);
-                Log.d(this.toString(), "Location: " + x + ", " + y + " Move ButtonTouched: " + bt);
+                Log.d(this.toString(), "Location: " + x + ", " + y + " Move ButtonTouched: " + bt + " Action: " + event.getAction());
             }
         }
         return super.onTouchEvent(event);
+    }
+
+    public void SwitchActivities()
+    {
+        Intent intent = new Intent(this.getApplicationContext(), levelCompleteActivity.class);
+        startActivity(intent);
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {

@@ -1,5 +1,6 @@
 package com.project.cse5236.habitofgravity;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.util.Log;
 
@@ -31,10 +32,16 @@ public class CollisionTester {
             if(la.goalObject.getRectangle().intersect(la.playerObject.getRectangle()))
             {
                 //save score to singleton
+                levelStats.getInstance().CurrentLevel =la.currentLevel;
+                levelStats.getInstance().NextLevel =la.nextLevel;
+                levelStats.getInstance().Score = la.Score;
                 //move to new activity
+                levelAssets.getInstance().levelThread.setRunning(false);
+                levelAssets.getInstance().levelActivity.SwitchActivities();
 
                 // the new activity can show the levels score
                 // and have buttons to replay level, go to next level or exit
+
             }
         }
     }
