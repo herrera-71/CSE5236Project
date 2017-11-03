@@ -20,7 +20,7 @@ import static java.lang.System.in;
  * Created by Kupo on 10/25/2017.
  */
 
-public class DatabaseManager {
+public class  DatabaseManager {
 
     // Defines the url for the database
     private static final String DATABASE_URL = "https://habitofgravity.firebaseio.com/";

@@ -37,12 +37,32 @@ public class levelLoader {
         la.goalObject = new goalObject(1200,200,200,200);
 
         la.currentLevel=1;
-        la.nextLevel=1;
+        la.nextLevel=2;
     }
 
     private static void loadLevelTwo() {
+        levelAssets la = levelAssets.getInstance();
+        la.playerObject = new PlayerObject(821,646);
+        la.blockList.add(new blockObject(0,0,1500,100));
+        la.blockList.add(new blockObject(0,0,100,1500));
+        la.blockList.add(new blockObject(1400,0,1500,100));
+        la.blockList.add(new blockObject(0,1400,100,1500));
+        la.goalObject = new goalObject(1200,200,200,200);
+
+        la.currentLevel=2;
+        la.nextLevel=3;
     }
 
     private static void loadLevelThree() {
+        levelAssets la = levelAssets.getInstance();
+        la.playerObject = new PlayerObject(821,646);
+        la.blockList.add(new blockObject(0,0,1500,100));
+        la.blockList.add(new blockObject(0,0,100,1500));
+        la.blockList.add(new blockObject(1400,0,1500,100));
+        la.blockList.add(new blockObject(0,1400,100,1500));
+        la.goalObject = new goalObject(1200,200,200,200);
+
+        la.currentLevel=3;
+        la.nextLevel=1;
     }
 }
