@@ -61,4 +61,7 @@ public class levelCompleteActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {}
 }

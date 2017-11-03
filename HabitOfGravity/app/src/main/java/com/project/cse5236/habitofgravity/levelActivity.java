@@ -30,9 +30,11 @@ public class levelActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        ContextHolder.getInstance().SetContext(this);
 
         levelAssets.getInstance().levelScreen=new levelScreen(this);
         levelAssets.getInstance().levelActivity =this;
@@ -42,7 +44,7 @@ public class levelActivity extends Activity {
 
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
-        ContextHolder.getInstance().SetContext(this);
+
 
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
