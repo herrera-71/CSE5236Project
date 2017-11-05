@@ -34,7 +34,7 @@ public class CollisionTester {
                 //save score to singleton
                 levelStats.getInstance().CurrentLevel =la.currentLevel;
                 levelStats.getInstance().NextLevel =la.nextLevel;
-                levelStats.getInstance().Score = la.Score;
+                levelStats.getInstance().Score = Math.max(la.Score,0);
                 //move to new activity
                 levelAssets.getInstance().levelThread.setRunning(false);
                 levelAssets.getInstance().levelActivity.SwitchActivities();

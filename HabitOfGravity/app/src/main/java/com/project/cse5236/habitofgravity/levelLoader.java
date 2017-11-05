@@ -9,6 +9,7 @@ public class levelLoader {
     {
         levelAssets la = levelAssets.getInstance();
         la.blockList.clear();
+        la.Score = 10000;
 
         switch (l)
         {
