@@ -31,6 +31,7 @@ public class levelThread extends Thread
     public void run()
     {
         levelAssets = levelAssets.getInstance();
+        levelAssets.levelThread = this;
 
         long startTime;
         float deltaTime;

@@ -1,14 +1,8 @@
 package com.project.cse5236.habitofgravity;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.os.Debug;
-import android.support.constraint.solver.widgets.Rectangle;
-import android.util.Log;
 
-import com.project.cse5236.habitofgravity.BitmapSingletons.blockBitmap;
 import com.project.cse5236.habitofgravity.BitmapSingletons.controllerButtons;
 
 /**
@@ -77,16 +71,23 @@ public class controllers {
         return false;
     }
 
-    public boolean touchedMoveButton(int x, int y)
+    public boolean touchedMoveButton(int x, int y, boolean started)
     {
-        if(lmRect.contains(x,y)) {
-            //move player left
+
+        if(started && lmRect.contains(x,y)) {
+            //moveRight player left
+            levelAssets.getInstance().playerObject.moveLeft(true);
             return true;
         }
-        if(rmRect.contains(x,y)) {
-            //move player right
+        else
+            levelAssets.getInstance().playerObject.moveLeft(false);
+        if(started && rmRect.contains(x,y)) {
+            //moveRight player right
+            levelAssets.getInstance().playerObject.moveRight(true);
             return true;
         }
+        else
+            levelAssets.getInstance().playerObject.moveRight(false);
         return false;
     }
 }

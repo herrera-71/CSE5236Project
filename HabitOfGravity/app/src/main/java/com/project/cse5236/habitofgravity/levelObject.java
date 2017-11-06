@@ -92,7 +92,9 @@ public abstract class levelObject {
     public void draw(Canvas canvas)
     {
         //canvas.drawBitmap(null, x, y,null);
+        int xOffset = levelAssets.getInstance().xOffset;
+        int yOffset = levelAssets.getInstance().yOffset;
         if(bitmap != null)
-            canvas.drawBitmap(bitmap, null, new Rect(x,y,x+width,y+heigth), null);
+            canvas.drawBitmap(bitmap, null, new Rect(x+xOffset,y+yOffset,x+width+xOffset,y+heigth+yOffset), null);
     }
 }

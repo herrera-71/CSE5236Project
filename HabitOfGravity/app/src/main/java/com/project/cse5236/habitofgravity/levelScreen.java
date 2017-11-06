@@ -7,6 +7,8 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.project.cse5236.habitofgravity.BitmapSingletons.backgroundBitmap;
+
 /**
  * Created by Brent on 10/15/2017.
  */
@@ -54,7 +56,7 @@ public class levelScreen extends SurfaceView implements SurfaceHolder.Callback{
     @Override
     public void surfaceCreated(SurfaceHolder holder){
 
-        background = new levelBackground(BitmapFactory.decodeResource(getResources(), R.drawable.whitecararaslab01));
+        background = new levelBackground(backgroundBitmap.getInstance().getBitmap());
 
         levelThread.setRunning(true);
         levelThread.start();
