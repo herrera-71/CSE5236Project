@@ -7,7 +7,7 @@ import com.project.cse5236.habitofgravity.ContextHolder;
 import com.project.cse5236.habitofgravity.R;
 
 /**
- * Created by Brent on 11/3/2017.
+ * Created by jonathanherrera on 11/6/17.
  */
 
 public class backgroundBitmap {

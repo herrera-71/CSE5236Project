@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "935579432043-tvt8jsedvbinflsmqo4afv91l9bm60bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.cse5236.habitofgravity",
+            "certificate_hash": "ec01c482c7929f6f65df375fee88fa7923f4abe1"
+          }
+        },
+        {
           "client_id": "935579432043-n21sqjqhkhlief6tlo8fsaupe2utdu7t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

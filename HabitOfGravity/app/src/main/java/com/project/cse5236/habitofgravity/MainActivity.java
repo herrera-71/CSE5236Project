@@ -8,16 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-<<<<<<< HEAD
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-=======
 import com.google.firebase.database.*;
 
 import java.util.HashMap;
 import java.util.Map;
->>>>>>> 57117e9991b002d2905ef1d0714729f78a251856
 
 public class MainActivity extends AppCompatActivity {
 

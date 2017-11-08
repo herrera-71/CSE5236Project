@@ -32,25 +32,11 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
         </activity>
         <activity
             android:name=".levelSelectActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".settingsActivity" />
-
-        <!--
-        <activity
-            android:name=".loginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        -->
 
         <activity
             android:name=".levelActivity"
@@ -58,7 +44,11 @@
             android:label="@string/title_activity_level"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".levelCompleteActivity"></activity>
+        <activity android:name=".levelCompleteActivity" />
+        <activity
+            android:name=".registrationActivity"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

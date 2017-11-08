@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class levelAssets {
 
     private static volatile levelAssets instance;
-
     private levelAssets()
     {
 
@@ -56,9 +55,8 @@ public class levelAssets {
 
     //socre
     public int Score=10000;
-    private int timePenalty =5;
-    private int rotatePenalty =500;
-
+    private int timePentalty =5;
+    private int rotationPentay =500;
 
     public void update() {
         //update background;
@@ -76,8 +74,6 @@ public class levelAssets {
         if(currentCooldown>0)
             currentCooldown--;
 
-        //take off a point from score from time
-        Score -= timePenalty;
     }
 
     public void draw(Canvas canvas) {
@@ -105,6 +101,9 @@ public class levelAssets {
 
         //draw controllers
         controllers.getInstance().draw(canvas);
+
+        //time penalty
+        Score -=timePentalty;
     }
 
     public void RotateLeft()
@@ -117,7 +116,8 @@ public class levelAssets {
         if(goalObject != null)
             goalObject.RotateLeft(playerObject.getRectangle());
 
-        Score-=rotatePenalty;
+        //rotation penalty
+        Score -= rotationPentay;
     }
 
     public void RotateRight()
@@ -129,7 +129,8 @@ public class levelAssets {
         if(goalObject != null)
             goalObject.RotateRight(playerObject.getRectangle());
 
-        Score-=rotatePenalty;
+        //rotation penalty
+        Score -=rotationPentay;
     }
 
     public void RotateLeftCooldown() {
