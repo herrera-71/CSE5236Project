@@ -76,11 +76,11 @@ public class levelScreen extends SurfaceView implements SurfaceHolder.Callback{
     public void draw(Canvas canvas)
     {
         super.draw(canvas);
-        final float scaleFactorX = getWidth()/(screenWidth *1f);
-        final float scaleFactorY = getHeight()/(screenHeight *1f);
+        //final float scaleFactorX = getWidth()/(screenWidth *1f);
+        //final float scaleFactorY = getHeight()/(screenHeight *1f);
         if(canvas!=null) {
             final int savedState = canvas.save();
-            canvas.scale(scaleFactorX, scaleFactorY);
+            //canvas.scale(scaleFactorX, scaleFactorY);
             background.draw(canvas);
             canvas.restoreToCount(savedState);
         }

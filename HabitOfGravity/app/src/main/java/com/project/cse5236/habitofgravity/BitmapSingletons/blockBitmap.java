@@ -18,7 +18,8 @@ public class blockBitmap {
     private static volatile blockBitmap instance;
 
     private blockBitmap() {
-        b=BitmapFactory.decodeResource(ContextHolder.getInstance().GetContext().getResources(), R.drawable.blueblock);
+        if(ContextHolder.getInstance().GetContext() != null)
+            b=BitmapFactory.decodeResource(ContextHolder.getInstance().GetContext().getResources(), R.drawable.blueblock);
     }
 
     public static blockBitmap getInstance()
