@@ -77,6 +77,20 @@
         app:layout_constraintTop_toBottomOf="@+id/Register"
         android:layout_marginRight="132dp" />
 
+    <Button
+        android:id="@+id/OfflineLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Offline Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FB_login_button" />
+
     <!--
     <TextView
         android:id="@+id/registrationInfo"

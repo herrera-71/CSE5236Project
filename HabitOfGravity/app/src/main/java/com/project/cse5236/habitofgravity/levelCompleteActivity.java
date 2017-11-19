@@ -1,6 +1,7 @@
 package com.project.cse5236.habitofgravity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,61 +72,81 @@ public class levelCompleteActivity extends AppCompatActivity {
         score = (TextView) findViewById(R.id.Score);
         highscore = (TextView) findViewById(R.id.HighScore);
 
-        //Get current level
-        final int level = levelStats.getInstance().CurrentLevel;
-        final String currentLevel = "Lvl" + Integer.toString(level) + "Highscore";
+        if(LoggedInOnline.getInstance().LoggedIn) {
+            //Get current level
+            final int level = levelStats.getInstance().CurrentLevel;
+            final String currentLevel = "Lvl" + Integer.toString(level) + "Highscore";
 
-        //Firebase ref
-        firebaseRef = FirebaseDatabase.getInstance().getReference();
+            //Firebase ref
+            firebaseRef = FirebaseDatabase.getInstance().getReference();
 
-        //Get UID
-        auth = FirebaseAuth.getInstance();
-        final String uid = auth.getCurrentUser().getUid();
+            //Get UID
+            auth = FirebaseAuth.getInstance();
+            final String uid = auth.getCurrentUser().getUid();
 
-        //Firebase post ref
-        userPostRef = firebaseRef.child("Users");
+            //Firebase post ref
+            userPostRef = firebaseRef.child("Users");
 
-        //User stored data
-        //userPostRef.setValue(uid);
-        //highscorePostRef = firebaseRef.child("Users");
-        Query query = firebaseRef.child("Users");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        UserStoredData userStoredData = ds.getValue(UserStoredData.class);
-                        if(userStoredData.ID.equals(uid)){
-                            String key = ds.getKey();
-                            int currentScore = levelStats.getInstance().Score;
-                            int highScore;
-                            if(level == 1){
-                                highScore = Integer.parseInt(userStoredData.Lvl1Highscore);
+            //User stored data
+            //userPostRef.setValue(uid);
+            //highscorePostRef = firebaseRef.child("Users");
+            Query query = firebaseRef.child("Users");
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            UserStoredData userStoredData = ds.getValue(UserStoredData.class);
+                            if (userStoredData.ID.equals(uid)) {
+                                String key = ds.getKey();
+                                int currentScore = levelStats.getInstance().Score;
+                                int highScore;
+                                if (level == 1) {
+                                    highScore = Integer.parseInt(userStoredData.Lvl1Highscore);
+                                } else if (level == 2) {
+                                    highScore = Integer.parseInt(userStoredData.Lvl2Highscore);
+                                } else {
+                                    highScore = Integer.parseInt(userStoredData.Lvl3Highscore);
+                                }
+                                if (currentScore > highScore) {
+                                    highScore = currentScore;
+                                    firebaseRef.child("Users").child(key).child(currentLevel).setValue(highScore + "");
+                                }
+                                highscore.setText("Highscore: " + highScore);
+
+
                             }
-                            else if(level == 2){
-                                highScore = Integer.parseInt(userStoredData.Lvl2Highscore);
-                            }
-                            else{
-                                highScore = Integer.parseInt(userStoredData.Lvl3Highscore);
-                            }
-                            if(currentScore > highScore) {
-                                highScore = currentScore;
-                                firebaseRef.child("Users").child(key).child(currentLevel).setValue(highScore + "");
-                            }
-                            highscore.setText("Highscore: " + highScore);
-
 
                         }
-
                     }
                 }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+        else
+        {
+
+            //Get current level
+            final int level = levelStats.getInstance().CurrentLevel;
+            int currentScore = levelStats.getInstance().Score;
+            SharedPreferences settings = this.getSharedPreferences("HabitOfGravityHighscore", 0);
+            int highScore = settings.getInt(Integer.toString(level), 0);
+            if(currentScore> highScore)
+            {
+                highScore=currentScore;
+
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt(Integer.toString(level), highScore);
+                // Commit the edits!
+                editor.commit();
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+            highscore.setText("Highscore: " + highScore);
+        }
 
         //userPostRef.setValue(uid);
         //highscorePostRef.setValue(levelStats.getInstance().Score);

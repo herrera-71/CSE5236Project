@@ -111,6 +111,16 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         loginButton = (Button) findViewById(R.id.Login);
         loginButton.setOnClickListener(this);
 
+        //Offline login
+        Button offlineLoginButton = (Button) findViewById(R.id.OfflineLogin);
+        offlineLoginButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                LoggedInOnline.getInstance().LoggedIn = false;
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void handleFacebookAccessToken(AccessToken accessToken) {
